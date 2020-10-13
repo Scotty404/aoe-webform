@@ -6,30 +6,32 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
+  background-color: #05a167;
+
 }
 
-<!--li a{-->
-<!--  float: left;-->
-<!--  border-right:1px solid #bbb;-->
-<!--}-->
+li a{
+  float: left;
+  border-right:1px solid #bbb;
+}
 
-<!--li:last-child {-->
-<!--  border-right: none;-->
-<!--}-->
+li:last-child {
+  border-right: none;
+}
 
-<!--li a {-->
-<!--  display: block;-->
-<!--  color: white;-->
-<!--  text-align: center;-->
-<!--  padding: 14px 16px;-->
-<!--  text-decoration: none;-->
-<!--  background-color: #333;-->
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: #333;
 
-<!--}-->
+}
 
-<!--li a:hover:not(.active) {-->
-<!--  background-color: #111;-->
-<!--}-->
+li a:hover:not(.active) {
+  background-color: #111;
+}
 
 .active {
   background-color: #4CAF50;
@@ -37,9 +39,9 @@
 </style>
 
 <ul class="horizontal" >
-  <li><a class="active" href="javascript:void(0)">Home</a></li>
-  <li><a href="javascript:void(0)">News</a></li>
-  <li><a href="javascript:void(0)">Contact</a></li>
-  <li class="rightli" style="float:right"><a href="javascript:void(0)">About</a></li>
+  <li><a class="active" href="{% url 'home' %}">Home</a></li>
+  <li><a href="{% url 'civs' %}">Civs</a></li>
+  <li><a href="{% url 'contact' %}">Contact</a></li>
+  <li class="rightli" style="float:right"><a href="about/">About</a></li>
 </ul>
 {% endblock%}

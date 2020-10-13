@@ -1,22 +1,123 @@
 {% extends 'base.html' %}
 
 {% block content%}
-<ul>
-{% for civ in response %}
-<h1>{{civ.name}}</h1>
+<style>
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
 
-<li>Name = {{civ.name}}</li>
-<li>expansion = {{civ.expansion}}</li>
-<li>army_type = {{civ.army_type}}</li>
-<li>unique_unit = {{civ.unique_unit}}</li>
-<li>unique_tech = {{civ.unique_tech}}</li>
-<li>team_bonus = {{civ.team_bonus}}</li>
-<li>civilization_bonus = {{civ.civilization_bonus}}</li>
+.active, .collapsible:hover {
+  background-color: green;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+</style>
+
+<!--<ul>-->
+{% for civ in response %}
+<!--<h1>{{civ.name}}</h1>-->
+
+<!--<li>Name = {{civ.name}}</li>-->
+<!--<li>expansion = {{civ.expansion}}</li>-->
+<!--<li>army_type = {{civ.army_type}}</li>-->
+<!--<li>unique_unit = {{civ.unique_unit}}</li>-->
+<!--<li>unique_tech = {{civ.unique_tech}}</li>-->
+<!--<li>team_bonus = {{civ.team_bonus}}</li>-->
+<!--<li>civilization_bonus = {{civ.civilization_bonus}}</li>-->
+    <button type="button" class="collapsible">{{civ.name}}</button>
+<div class="content">
+    <button type="button" class="collapsible">expansion</button>
+    <div class="content">{{civ.expansion}}</div>
+
+    <button type="button" class="collapsible">army_type</button>
+    <div class="content">{{civ.army_type}}</div>
+
+    <button type="button" class="collapsible">unique_unit</button>
+    <div class="content">
+
+        <ul>
+            {% for unit in civ.unique_unit.items %}
+                <li>{{unit.0}} = {{unit.1}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <button type="button" class="collapsible">unique_tech</button>
+    <div class="content">
+        <ul>
+            {% for tech in civ.unique_tech.items %}
+                <li>{{tech.0}} = {{tech.1}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <button type="button" class="collapsible">team_bonus</button>
+    <div class="content">{{civ.team_bonus}}</div>
+
+    <button type="button" class="collapsible">civilization_bonus</button>
+    <div class="content">{{civ.civilization_bonus}}</div>
+
+</div>
 
 <br><hr>
 {% endfor %}
-</ul>
+<!--</ul>-->
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
 
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
 {% endblock %}
 
 

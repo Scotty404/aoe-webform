@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
 from civs.views import civs_view
 from pages.views import home_view, contact_view, aoe_view
 from product.views import product_detail_view, product_create_view, redener_intial_data, product_lookup
@@ -27,4 +28,7 @@ urlpatterns = [
     path('create/', redener_intial_data),
     path('lookup/<int:id>/', product_lookup),
     path('civs/', civs_view),
+    url(r'^$', home_view, name='home'),
+    url(r'^civs/$', civs_view, name='civs'),
+    url(r'^contact/$', contact_view, name='contact'),
 ]
