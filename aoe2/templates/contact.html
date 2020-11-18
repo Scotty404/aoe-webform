@@ -2,26 +2,11 @@
 
 {% block content%}
 <h1>Contacts</h1>
-<p>{{request.user}}</p>
+<p>You are currently here as: {{request.user}}</p>
 
 <p>
-    {{ my_text }}, {{ my_number }}
-    <ul>
-    {% for item in my_list %}
-    {% if item == 543 %}
-        <li>{{forloop.counter}} -{{item | add:22}}</li>
-    {% elif item == "abc" %}
-        <li>{{forloop.counter}} - abc</li>
-    {% else %}
-    <li>{{forloop.counter}} -{{item}}</li>
-    {% endif %}
-    {% endfor %}
-    </ul>
-
-
-
-
-
+    This Project was to learn about Django and its workings. <br>
+    Code is available at https://github.com/Scotty404/aoe-webform
 </p>
 {% endblock%}
 

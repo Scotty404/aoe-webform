@@ -15,7 +15,7 @@
 }
 
 .active, .collapsible:hover {
-  background-color: green;
+  background-color: #212529;
 }
 
 .content {
@@ -53,17 +53,8 @@
 }
 </style>
 
-<!--<ul>-->
 {% for civ in response %}
-<!--<h1>{{civ.name}}</h1>-->
 
-<!--<li>Name = {{civ.name}}</li>-->
-<!--<li>expansion = {{civ.expansion}}</li>-->
-<!--<li>army_type = {{civ.army_type}}</li>-->
-<!--<li>unique_unit = {{civ.unique_unit}}</li>-->
-<!--<li>unique_tech = {{civ.unique_tech}}</li>-->
-<!--<li>team_bonus = {{civ.team_bonus}}</li>-->
-<!--<li>civilization_bonus = {{civ.civilization_bonus}}</li>-->
     <button type="button" class="collapsible">{{civ.name}}</button>
 <div class="content">
     <button type="button" class="collapsible">expansion</button>
@@ -101,7 +92,6 @@
 
 <br><hr>
 {% endfor %}
-<!--</ul>-->
 <script>
 var coll = document.getElementsByClassName("collapsible");
 var i;

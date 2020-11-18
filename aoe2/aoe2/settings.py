@@ -14,13 +14,15 @@ from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+CIV_VIEW = Path(__file__).resolve().parent.parent/'civs'
+BUILD_VIEW = Path(__file__).resolve().parent.parent/'builds'
 print(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'o__1*0habt1h6^)i2d6_(%xfbz+bf&jt^=*071x67pna!%%+zy'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,8 +42,8 @@ INSTALLED_APPS = [
 
     #own
     'pages',
-    'product',
     'civs',
+    'builds',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +61,9 @@ ROOT_URLCONF = 'aoe2.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                 os.path.join(CIV_VIEW, 'templates'),
+                 os.path.join(BUILD_VIEW, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

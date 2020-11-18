@@ -14,11 +14,12 @@ def civs_view(request):
 
     response = api.get('https://age-of-empires-2-api.herokuapp.com/api/v1/civilizations')
     civ_info = json.loads(response.content.decode("utf-8"))
-    # print(civ_info.get('civilizations'))
 
     for i, civ in enumerate(civ_info.get('civilizations')):
-        unique_unit = (api.get(civ.get('unique_unit')[0]))
-        unique_tech = (api.get(civ.get('unique_tech')[0]))
+        if civ.get('unique_unit'):
+            unique_unit = (api.get(civ.get('unique_unit')[0], ''))
+        if civ.get('unique_tech'):
+            unique_tech = (api.get(civ.get('unique_tech')[0], ''))
         civ_info['civilizations'][i]['unique_unit'] = json.loads(unique_unit.content.decode("utf-8"))
         civ_info['civilizations'][i]['unique_tech'] = json.loads(unique_tech.content.decode("utf-8"))
 
